@@ -9,15 +9,15 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "verible", "clangd" },
+                ensure_installed = { "lua_ls", "verible", "clangd", "veridian" }, -- Added "veridian"
                 automatic_installation = true,
             })
         end,
     },
     {
-        "neovim/nvim-lspconfig", 
+        "neovim/nvim-lspconfig",
         config = function()
-            local opts = { noremap=true, silent=true }
+            local opts = { noremap = true, silent = true }
             vim.keymap.set('n', '<leader>o', vim.diagnostic.open_float, opts)
             vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
             vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
@@ -34,11 +34,10 @@ return {
                 end
             end, { noremap = true, silent = true })
 
-            -- Use an on_attach function to only map the following keys
-            -- after the language server attaches to the current buffer
+            -- Use an on_attach function to only map the following keys after the language server attaches to the current buffer
             local on_attach = function(client, bufnr)
                 vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-                local bufopts = { noremap=true, silent=true, buffer=bufnr }
+                local bufopts = { noremap = true, silent = true, buffer = bufnr }
                 vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
                 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
                 vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
@@ -76,7 +75,19 @@ return {
                 filetypes = { "c", "cpp", "cc", "mpp", "ixx" },  -- Corrected from "iletypes" to "filetypes"
                 on_attach = on_attach
             })
-        end
+
+            -- New Veridian setup
+            local lspconfutil = require 'lspconfig/util'
+            local root_pattern = lspconfutil.root_pattern("veridian.yml", ".git")
+            lspconfig.veridian.setup {
+                cmd = { 'veridian' },
+                root_dir = function(fname)
+                    local filename = lspconfutil.path.is_absolute(fname) and fname
+                        or lspconfutil.path.join(vim.loop.cwd(), fname)
+                    return root_pattern(filename) or lspconfutil.path.dirname(filename)
+                end,
+            }
+        end,
     }
 }
 
