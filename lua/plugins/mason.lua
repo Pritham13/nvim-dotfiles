@@ -74,9 +74,10 @@ return {
 					"--header-insertion=iwyu",
 					"--completion-style=detailed",
 					"--function-arg-placeholders",
-					"-j4",
+					"-j", "4",
 					"--fallback-style=llvm"
-				}
+				},
+				iletypes = { "c", "cpp", "cc", "mpp", "ixx" }
 			}
         end
     }
