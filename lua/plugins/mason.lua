@@ -72,7 +72,7 @@ return {
                     "-j", "4",
                     "--fallback-style=llvm"
                 },
-                filetypes = { "c", "cpp", "cc", "mpp", "ixx" },  -- Corrected from "iletypes" to "filetypes"
+                filetypes = {"h", "c", "cpp", "cc", "mpp", "ixx" },  -- Corrected from "iletypes" to "filetypes"
                 on_attach = on_attach
             })
 
