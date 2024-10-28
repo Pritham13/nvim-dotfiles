@@ -105,20 +105,27 @@ return {
   -- }
   
     
-    dashboard.section.buttons.val = {
-      dashboard.button('e', '  [E]nter new file', ':ene <BAR> startinsert <CR>'),
-      dashboard.button('q', '󰅚  [Q]uit NVIM', ':qa<CR>'),
-      { type = 'button', val = '' },
-      dashboard.button('_ s .', '󰅚  [S]earch recent files', ':<leader> s .'),
-      dashboard.button('_ s n', '󰅚  [S]earch [N]eovim files', ''),
-      dashboard.button('_ s k', '󰅚  [S]earch [K]eymaps', ''),
-      dashboard.button('_ s h', '󰅚  [S]earch [H]elp', ''),
-    }
-    local handle = io.popen 'fortune'
-    local fortune = handle:read '*a'
-    handle:close()
-    dashboard.section.footer.val = fortune
-    dashboard.config.opts.noautocmd = true
+ dashboard.section.buttons.val = {
+   dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
+   dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
+   dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
+   dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
+   dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.vim<CR>"),
+   dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
+}
+
+local function footer()
+ return "Ahh u wanna write some code huh"
+end
+
+dashboard.section.footer.val = footer()
+
+dashboard.section.footer.opts.hl = "Type"
+dashboard.section.header.opts.hl = "Include"
+dashboard.section.buttons.opts.hl = "Keyword"
+
+dashboard.opts.opts.noautocmd = true
+alpha.setup(dashboard.opts)    dashboard.config.opts.noautocmd = true
     vim.cmd [[autocmd User AlphaReady echo 'ready']]
     alpha.setup(dashboard.config)
   end
