@@ -9,7 +9,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "verible", "clangd", "veridian" },
+                ensure_installed = { "lua_ls", "verible", "clangd" },
                 automatic_installation = true,
             })
         end,

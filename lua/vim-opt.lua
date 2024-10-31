@@ -15,3 +15,11 @@ vim.api.nvim_set_keymap('n', '<leader>h', ':split<CR>', { noremap = true, silent
 vim.api.nvim_set_keymap('n', '<leader>v', ':vsplit<CR>', { noremap = true, silent = true })
 vim.wo.relativenumber = true
 vim.api.nvim_set_keymap('n', '<Leader>bd', ':bd<CR>', { noremap = true, silent = true })
+
+vim.keymap.set('n', '<leader>iv', function()
+  -- Run iverilog on the current file and send output to the quickfix list
+  vim.cmd("cexpr system('iverilog -o testbench_out.out % &&  ./testbench_out')")
+  -- Open the quickfix list if there are any errors or warnings
+  vim.cmd("cwindow")
+end, { desc = "Run Iverilog Testbench and Show Errors" })
+

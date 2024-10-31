@@ -2,11 +2,6 @@
 
 Install veridian
 
-```bash
-cargo install --git https://github.com/vivekmalneedi/veridian.git
-echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc
-```
 # Neovim LSP Configuration
 
 This document explains the keybinds set up for the Neovim LSP configuration. In this setup, the leader key is set to `<Space>`. The following keybinds have been configured to make interacting with diagnostics and language servers more efficient.
