@@ -22,4 +22,7 @@ vim.keymap.set('n', '<leader>iv', function()
   -- Open the quickfix list if there are any errors or warnings
   vim.cmd("cwindow")
 end, { desc = "Run Iverilog Testbench and Show Errors" })
+-- Enable mouse mode, can be useful for resizing splits for example!
+vim.opt.mouse = 'a' 
+
 
