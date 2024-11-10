@@ -115,7 +115,7 @@ return {
 }
 
 local function footer()
- return "Ahh u wanna write some code huh"
+ return ""
 end
 
 dashboard.section.footer.val = footer()
