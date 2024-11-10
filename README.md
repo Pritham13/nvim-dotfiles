@@ -1,6 +1,12 @@
-# veridian 
+## Installation
 
-Install veridian
+```bash
+mv ~/.config/nvim ~/nvim.bkp 
+rm -rf ~/.config/nvim/*
+cd ~/.config/nvim
+git clone https://github.com/Pritham13/nvim-dotfiles.git .
+rm -rf .git 
+```
 
 # Neovim LSP Configuration
 
