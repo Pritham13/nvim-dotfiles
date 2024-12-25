@@ -9,7 +9,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "verible", "clangd" },
+                ensure_installed = { "lua_ls", "clangd" },
                 automatic_installation = true,
             })
         end,
@@ -57,10 +57,10 @@ return {
 
             local lspconfig = require("lspconfig")
             lspconfig.lua_ls.setup({ on_attach = on_attach })
-            lspconfig.verible.setup({
-                filetypes = { "verilog", "systemverilog" },
-                on_attach = on_attach
-            })
+            -- lspconfig.verible.setup({
+            --     filetypes = { "verilog", "systemverilog" },
+            --     on_attach = on_attach
+            -- })
             lspconfig.clangd.setup({
                 cmd = {
                     "clangd",
@@ -77,18 +77,18 @@ return {
             })
 
             -- Veridian setup for Verilog and SystemVerilog
-            -- local lspconfutil = require 'lspconfig/util'
-            -- local root_pattern = lspconfutil.root_pattern("veridian.yml", ".git")
-            -- lspconfig.veridian.setup({
-            --     cmd = { 'veridian' },
-            --     filetypes = { "verilog", "systemverilog" }, -- Ensures it attaches to Verilog files
-            --     root_dir = function(fname)
-            --         local filename = lspconfutil.path.is_absolute(fname) and fname
-            --             or lspconfutil.path.join(vim.loop.cwd(), fname)
-            --         return root_pattern(filename) or lspconfutil.path.dirname(filename)
-            --     end,
-            --     on_attach = on_attach,
-            -- })
+            local lspconfutil = require 'lspconfig/util'
+            local root_pattern = lspconfutil.root_pattern("veridian.yml", ".git")
+            lspconfig.veridian.setup({
+                cmd = { 'veridian' },
+                filetypes = { "verilog", "systemverilog" }, -- Ensures it attaches to Verilog files
+                root_dir = function(fname)
+                    local filename = lspconfutil.path.is_absolute(fname) and fname
+                        or lspconfutil.path.join(vim.loop.cwd(), fname)
+                    return root_pattern(filename) or lspconfutil.path.dirname(filename)
+                end,
+                on_attach = on_attach,
+            })
         end,
     }
 }

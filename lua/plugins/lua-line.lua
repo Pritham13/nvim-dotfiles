@@ -138,10 +138,10 @@ return {
             padding = { right = 1 },
         }
 
-        ins_left {
-            'filesize',
-            cond = conditions.buffer_not_empty,
-        }
+        -- ins_left {
+        --     'filesize',
+        --     cond = conditions.buffer_not_empty,
+        -- }
 
         ins_left {
             'filename',
@@ -153,18 +153,7 @@ return {
 
         ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 
-        ins_left {
-            'diagnostics',
-            sources = { 'nvim_diagnostic' },
-            symbols = { error = ' ', warn = ' ', info = ' ' },
-            diagnostics_color = {
-                error = { fg = colors.red },
-                warn = { fg = colors.yellow },
-                info = { fg = colors.cyan },
-            },
-        }
-
-        ins_left {
+          ins_left {
             function()
                 return '%='
             end,
@@ -189,6 +178,17 @@ return {
             icon = ' LSP:',
             color = { fg = '#ffffff', gui = 'bold' },
         }
+      ins_right {
+            'diagnostics',
+            sources = { 'nvim_diagnostic' },
+            symbols = { error = ' ', warn = ' ', info = ' ' },
+            diagnostics_color = {
+                error = { fg = colors.red },
+                warn = { fg = colors.yellow },
+                info = { fg = colors.cyan },
+            },
+        }
+
 
         ins_right {
             'o:encoding',
@@ -210,16 +210,16 @@ return {
             color = { fg = colors.violet, gui = 'bold' },
         }
 
-        ins_right {
-            'diff',
-            symbols = { added = ' ', modified = '󰝤 ', removed = ' ' },
-            diff_color = {
-                added = { fg = colors.green },
-                modified = { fg = colors.orange },
-                removed = { fg = colors.red },
-            },
-            cond = conditions.hide_in_width,
-        }
+        -- ins_right {
+        --     'diff',
+        --     symbols = { added = ' ', modified = '󰝤 ', removed = ' ' },
+        --     diff_color = {
+        --         added = { fg = colors.green },
+        --         modified = { fg = colors.orange },
+        --         removed = { fg = colors.red },
+        --     },
+        --     cond = conditions.hide_in_width,
+        -- }
 
         ins_right {
             function()
