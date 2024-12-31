@@ -1,7 +1,12 @@
 vim.cmd("set cursorline")
 vim.cmd("set cursorcolumn")
 vim.cmd("set shiftwidth=2")
+vim.cmd("set expandtab")
 vim.cmd("set nu")
+-- vim.cmd("set autoindent")
+-- vim.cmd("set smartindent")
+-- relative number
+-- vim.wo.relativenumber = true
 vim.cmd("set tabstop=2")
 vim.g.mapleader = " "
 -- Keybindings for switching between buffers
@@ -18,10 +23,7 @@ vim.keymap.set({'n'}, '<C-s>', ':wa<ENTER>')
 
 -- Split window vertically
 vim.api.nvim_set_keymap('n', '<leader>v', ':vsplit<CR>', { noremap = true, silent = true })
-vim.wo.relativenumber = true
 vim.api.nvim_set_keymap('n', '<Leader>bd', ':bd<CR>', { noremap = true, silent = true })
 
 -- Enable mouse mode, can be useful for resizing splits for example!
-vim.opt.mouse = 'a' 
-
-
+vim.opt.mouse = 'a'
