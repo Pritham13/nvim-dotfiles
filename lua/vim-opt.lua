@@ -20,6 +20,7 @@ vim.keymap.set('n', '<C-l>', '<C-w>l', { noremap = true, silent = true }) -- Ctr
 vim.api.nvim_set_keymap('n', '<leader>h', ':split<CR>', { noremap = true, silent = true })
 vim.keymap.set({'i'}, '<C-s>', '<C-o>:wa<ENTER>')
 vim.keymap.set({'n'}, '<C-s>', ':wa<ENTER>')
+vim.keymap.set({'n'}, '<leader>w', ':wa<ENTER>')
 
 -- Split window vertically
 vim.api.nvim_set_keymap('n', '<leader>v', ':vsplit<CR>', { noremap = true, silent = true })
