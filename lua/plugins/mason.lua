@@ -10,7 +10,7 @@ return {
     config = function()
       require("mason-lspconfig").setup({
         -- ensure_installed = { "lua_ls", "clangd", "veridian" },
-        ensure_installed = { "lua_ls", "clangd"},
+        ensure_installed = { "lua_ls", "clangd" },
         automatic_installation = true,
       })
     end,
@@ -77,8 +77,8 @@ return {
           "--header-insertion=iwyu",
           "--completion-style=detailed",
           "--function-arg-placeholders",
-          "-j",
-          "--fallback-style=llvm",
+          "-j=0", -- Use "-j=0" instead of just "-j"
+          '--fallback-style="{BasedOnStyle: LLVM, IndentWidth: 4, UseTab: Never, TabWidth: 4}"',
         },
         filetypes = { "c", "cpp", "cc", "h", "hpp", "mpp", "ixx" },
         on_attach = on_attach,
