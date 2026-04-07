@@ -73,12 +73,12 @@ return {
         cmd = {
           "clangd",
           "--background-index",
-          "--clang-tidy",
-          "--header-insertion=iwyu",
-          "--completion-style=detailed",
-          "--function-arg-placeholders",
-          "-j=0", -- Use "-j=0" instead of just "-j"
-          '--fallback-style="{BasedOnStyle: LLVM, IndentWidth: 4, UseTab: Never, TabWidth: 4}"',
+          -- "--clang-tidy",
+          -- "--header-insertion=iwyu",
+          -- "--completion-style=detailed",
+          -- "--function-arg-placeholders",
+          -- "-j=0", -- Use "-j=0" instead of just "-j"
+          -- '--fallback-style="{BasedOnStyle: LLVM, IndentWidth: 4, UseTab: Never, TabWidth: 4}"',
         },
         filetypes = { "c", "cpp", "cc", "h", "hpp", "mpp", "ixx" },
         on_attach = on_attach,
